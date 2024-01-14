@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/Brewlogger-Blz.props" />
+</Project>

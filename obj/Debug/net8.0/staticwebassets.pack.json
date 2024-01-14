@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/projectbundle/Brewlogger-Blz.bundle.scp.css",
+      "PackagePath": "staticwebassets/Brewlogger-Blz.bundle.scp.css"
+    },
+    {
+      "Id": "/home/rogelio/RiderProjects/Brewlogger-Blz/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Brewlogger-Blz.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Brewlogger-Blz.props",
+      "PackagePath": "build\\Brewlogger-Blz.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Brewlogger-Blz.props",
+      "PackagePath": "buildMultiTargeting\\Brewlogger-Blz.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Brewlogger-Blz.props",
+      "PackagePath": "buildTransitive\\Brewlogger-Blz.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "QBxpElmVdI68fvRoSYcUccXLjWQuZCfNA1cF/rFh1yk=",
+  "Source": "Brewlogger-Blz",
+  "BasePath": "_content/Brewlogger-Blz",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Brewlogger-Blz/wwwroot",
+      "Source": "Brewlogger-Blz",
+      "ContentRoot": "/home/rogelio/RiderProjects/Brewlogger-Blz/wwwroot/",
+      "BasePath": "_content/Brewlogger-Blz",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/bundle/Brewlogger-Blz.styles.css",
+      "SourceId": "Brewlogger-Blz",
+      "SourceType": "Computed",
+      "ContentRoot": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/bundle/",
+      "BasePath": "_content/Brewlogger-Blz",
+      "RelativePath": "Brewlogger-Blz.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/bundle/Brewlogger-Blz.styles.css"
+    },
+    {
+      "Identity": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/projectbundle/Brewlogger-Blz.bundle.scp.css",
+      "SourceId": "Brewlogger-Blz",
+      "SourceType": "Computed",
+      "ContentRoot": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/projectbundle/",
+      "BasePath": "_content/Brewlogger-Blz",
+      "RelativePath": "Brewlogger-Blz.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/home/rogelio/RiderProjects/Brewlogger-Blz/obj/Debug/net8.0/scopedcss/projectbundle/Brewlogger-Blz.bundle.scp.css"
+    },
+    {
+      "Identity": "/home/rogelio/RiderProjects/Brewlogger-Blz/wwwroot/app.css",
+      "SourceId": "Brewlogger-Blz",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/rogelio/RiderProjects/Brewlogger-Blz/wwwroot/",
+      "BasePath": "_content/Brewlogger-Blz",
+      "RelativePath": "app.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/app.css"
+    }
+  ]
+}
