@@ -1,0 +1,25 @@
+{
+  "name": "brewlogger-blz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:run": "npx tailwindcss -i ./Styles/tailwind.css -o ./wwwroot/tailwind.css --watch",
+    "css:build": "npx tailwindcss -i ./Styles/tailwind.css -o ./wwwroot/tailwind.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitrerogelio/Brewlogger-Blz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mitrerogelio/Brewlogger-Blz/issues"
+  },
+  "homepage": "https://github.com/mitrerogelio/Brewlogger-Blz#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

@@ -1,70 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Brewlogger-Blz-59094068-cfb5-451f-8c95-98310142dbb1</UserSecretsId>
-    <RootNamespace>Brewlogger-Blz</RootNamespace>
-    <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-Brewlogger-Blz-59094068-cfb5-451f-8c95-98310142dbb1</UserSecretsId>
+        <RootNamespace>Brewlogger-Blz</RootNamespace>
+        <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Update="Data\app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
-    <None Remove="tailwindcss-3.4.1\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="Data\app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="tailwindcss-3.4.1\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <UpToDateCheckBuilt Include="Styles/tailwind.css" Set="Css"/>
+        <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Remove="tailwindcss-3.4.1\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="tailwindcss-3.4.1\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\.eslintrc.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\content-resolution\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\parcel\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\postcss-cli\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\rollup-sass\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\rollup\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\tailwindcss-cli\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\vite\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\webpack-4\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\integrations\webpack-5\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\darwin-arm64\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\darwin-x64\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\freebsd-x64\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\linux-arm-gnueabihf\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\linux-arm64-gnu\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\linux-arm64-musl\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\linux-x64-gnu\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\linux-x64-musl\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\npm\win32-x64-msvc\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\crates\node\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\oxide\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\package-lock.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\package-lock.stable.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\package.stable.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\standalone-cli\package-lock.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\standalone-cli\package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\stubs\.prettierrc.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\tests\fixtures\esm-package.json" />
-    <_ContentIncludedByDefault Remove="tailwindcss-3.4.1\turbo.json" />
-  </ItemGroup>
+    <Target Name="Tailwind" BeforeTargets="Build">
+        <Exec Command="npm run css:build"/>
+    </Target>
 
 </Project>

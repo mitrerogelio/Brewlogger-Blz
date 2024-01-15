@@ -1,3 +1,4 @@
-/tailwindcss-3.4.1/
 /bin/
 /obj/
+/node_modules/
+/.idea/
