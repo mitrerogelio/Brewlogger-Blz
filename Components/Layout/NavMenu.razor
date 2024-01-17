@@ -36,7 +36,7 @@
             </div>
             <div class="-mr-2 flex items-center sm:hidden">
                 <!-- Mobile menu button -->
-                <button type="button" class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-controls="mobile-menu" aria-expanded="false">
+                <button @onclick="OpenSubmenu" type="button" class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
                     <!-- Menu open: "hidden", Menu closed: "block" -->
@@ -52,18 +52,24 @@
         </div>
     </div>
 
-    <MobileMenu></MobileMenu>
+    <MobileMenu ExpandSubmenu="@openMobileSubmenu"></MobileMenu>
 </nav>
 
 
 @code {
     private bool isDropdownVisible = false;
+    private bool openMobileSubmenu = false;
 
     private string DropdownClasses => isDropdownVisible
         ? "absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-out duration-100 transform opacity-100 scale-100"
         : "hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-in duration-75 transform opacity-0 scale-95";
 
 
+    private void OpenSubmenu()
+    {
+        openMobileSubmenu = !openMobileSubmenu;
+    }
+    
     private void ToggleDropdown()
     {
         isDropdownVisible = !isDropdownVisible;

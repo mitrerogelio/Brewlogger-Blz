@@ -25,4 +25,10 @@
         <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="wwwroot\data\brewers.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
