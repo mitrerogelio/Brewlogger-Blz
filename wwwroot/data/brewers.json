@@ -1,2 +1,50 @@
-{
-}
+[
+  {
+    "Name": "Aeropress",
+    "ImageUrl": "https://bluebarncoffee.com/cdn/shop/articles/Aeropress.drip.coffee_1200x1200.jpg?v=1577719586",
+    "PageUrl": "aeropress",
+    "Description": "This is an ideal brewing device for road warriors, and perfect for the hotel room or camping trip—though take note that it’s best for brewing single cups at a time. The method uses a thin paper filter and pressure to force the water through the coffee. This isn’t technically espresso, and it will have a similar mouthfeel to a pour over. But for those who are seeking an espresso copycat, especially while on the road, this is the best bet.",
+    "StartingDose": 15,
+    "StartingRatio": 13
+  },
+  {
+    "Name": "Chemex",
+    "ImageUrl": "https://images.squarespace-cdn.com/content/v1/50ce0513e4b0c301a8234314/1448856096905-0JV4LBOQRKOTS3VAUIPX/CI_PRODUCT0365+1.jpg?format=1000w",
+    "PageUrl": "chemex",
+    "Description": "An iconic brewer with a timeless design invented in 1941, the Chemex is easy to use and easy on the eyes. The Chemex is housed in the MOMA permanent design collection —it also lives on most of our kitchen counters, too. It  brews a clean cup and maintains body and balanced floral notes.",
+    "StartingDose": 40,
+    "StartingRatio": 16
+  },
+  {
+    "Name": "v60",
+    "ImageUrl": "https://media.fds.fi/decor_image/800/6e21d36a-16b3-4d6b-9409-45221d1e09fe.jpeg",
+    "PageUrl": "v60",
+    "Description": "Nuanced and versatile, the Hario is an elegant brewer for those who want to perfect the pour. It’s great for folks who are looking for complete control over brewing extraction. The key here is to pour slow. The entire brew process for a 10oz mug takes about three minutes.",
+    "StartingDose": 20,
+    "StartingRatio": 16
+  },
+  {
+    "Name": "Moka Pot",
+    "ImageUrl": "https://cb.scene7.com/is/image/Crate/BialettiMoka6cpEsprMkrAlmnSHF16/$web_pdp_main_carousel_med$/220913133654/bialetti-moka-aluminum-6-cup-espresso-maker.jpg",
+    "PageUrl": "mokapot",
+    "Description": "So much more than an object, the iconic Moka pot represents our country’s joy, audacity, creativity, and, of course, its convivial way of living. A blend of friendship, love, warmth, and conversation. A secret that Bialetti has been bringing to the table since 1933.",
+    "StartingDose": 35,
+    "StartingRatio": 9
+  },
+  {
+    "Name": "Espresso Machine",
+    "ImageUrl": "https://clivecoffee.com/cdn/shop/articles/nice-espresso-shot-a53-dp-lucca_078dfca3-b92f-4f3d-8847-3666f1c5216a.jpg?crop=center&height=1024&v=1682534006&width=1024",
+    "PageUrl": "espresso",
+    "Description": "Brewing great espresso may take a little practice to master, and will definitely take some experimentation, which is all part of the fun. Grind, weight and time are key factors when brewing espresso, and most likely you’ll have to adjust one or more of these elements several times to get your shot dialed in.",
+    "StartingDose": 18,
+    "StartingRatio": 3
+  },
+  {
+    "Name": "French Press",
+    "ImageUrl": "https://cb.scene7.com/is/image/Crate/BodumChmbrdCopperFrnchPrssSHF16",
+    "PageUrl": "press",
+    "Description": "Easy to brew and super consistent, the French Press is very reliable. Its classic and well-engineered design hasn’t changed much since its invention in 1929, and it’s perfect for making multiple cups of heavy-bodied coffee in 4 minutes.",
+    "StartingDose": 50,
+    "StartingRatio": 12
+  }
+]

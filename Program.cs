@@ -8,6 +8,11 @@ using Brewlogger_Blz.Data;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"] ??
+                          throw new InvalidOperationException("API base URL not configured."))
+});
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -23,7 +28,8 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
+                          throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();

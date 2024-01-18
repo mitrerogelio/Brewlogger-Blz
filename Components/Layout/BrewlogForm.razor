@@ -1,0 +1,45 @@
+@using Brewlogger_Blz.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<EditForm Model="@_brewlog"  FormName="Brewlog Form" OnValidSubmit="HandleValidSubmit">
+    <InputText id="brewerName" @bind-Value="_brewlog.BrewerUsed"/>
+    <InputText id="coffeeName" @bind-Value="_brewlog.CoffeeName"/>
+    <InputNumber id="dose" @bind-Value="_brewlog.Dose"/>
+    <InputText id="grind" @bind-Value="_brewlog.Grind"/>
+    <InputText id="roast" @bind-Value="_brewlog.Roast"/>
+    <InputNumber id="ratio" @bind-Value="_brewlog.BrewRatio"/>
+    <InputNumber id="rating" @bind-Value="_brewlog.Rating"/>
+    <InputTextArea id="notes" @bind-Value="_brewlog.Notes"/>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    [Parameter] public Brewer? CurrentBrewer { get; set; }
+
+    private Brewlog _brewlog = new();
+
+    protected override void OnParametersSet()
+    {
+        if (CurrentBrewer != null)
+        {
+            _brewlog.BrewerUsed = CurrentBrewer.Name;
+            // Set any default values for the form if needed
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        HttpResponseMessage response = await Http.PostAsJsonAsync("https://localhost:5279/api/brewlogs", _brewlog);
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+           NavigationManager.Refresh(); 
+        }
+    }
+
+}

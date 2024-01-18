@@ -1,6 +1,40 @@
-@page "/brew"
-<h3>Brew</h3>
+@page "/brew/{BrewerName}"
+@using Brewlogger_Blz.Models
+@using Brewlogger_Blz.Components.Layout
+@using System.Text.Json
+@inject IWebHostEnvironment Env
+@inject NavigationManager NavigationManager
+
+
+@{
+    if (_currentBrewer != null)
+    {
+        <BrewlogForm CurrentBrewer="@_currentBrewer"/>
+    }
+}
 
 @code {
-    
+    [Parameter] public string? BrewerName { get; set; }
+
+    private Brewer? _currentBrewer;
+
+    private List<Brewer>? _brewers = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        string jsonFilePath = Path.Combine(Env.WebRootPath, "data/brewers.json");
+        if (File.Exists(jsonFilePath))
+        {
+            string json = await File.ReadAllTextAsync(jsonFilePath);
+            _brewers = JsonSerializer.Deserialize<List<Brewer>>(json);
+        }
+
+        _currentBrewer = _brewers?.FirstOrDefault(b => b.Name.Equals(BrewerName, StringComparison.OrdinalIgnoreCase));
+
+        if (_currentBrewer == null)
+        {
+            NavigationManager.NavigateTo("/error"); // Use the appropriate error page route
+        }
+    }
+
 }

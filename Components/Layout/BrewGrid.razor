@@ -1,12 +1,40 @@
-<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
-        <div class="flex flex-1 flex-col p-8">
-            <img class="mx-auto h-32 w-32 flex-shrink-0 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-            <h3 class="mt-6 text-sm font-medium text-gray-900">Brewer Name</h3>
-        </div>
-    </li>
-</ul>
+@rendermode InteractiveServer
+@using System.Text.Json
+@using Brewlogger_Blz.Models
+@inject IWebHostEnvironment Env
+@inject NavigationManager NavigationManager
+
+@if (_brewers != null)
+{
+    <ul role="list" class="grid gap-6 gap-y-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        @foreach (Brewer brewer in _brewers)
+        {
+            <li onclick="@(() => NavigateToBrewPage(brewer.PageUrl))" class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+                <div class="flex flex-1 flex-col p-8">
+                    <img class="mx-auto h-32 w-32 flex-shrink-0 rounded-full" src="@brewer.ImageUrl" alt="Picture of @brewer.Name">
+                    <h3 class="mt-6 text-sm font-medium text-gray-899">@brewer.Name</h3>
+                </div>
+            </li>
+        }
+    </ul>
+}
 
 @code {
+    private List<Brewer>? _brewers = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        string jsonFilePath = Path.Combine(Env.WebRootPath, "data/brewers.json");
+        if (File.Exists(jsonFilePath))
+        {
+            string json = await File.ReadAllTextAsync(jsonFilePath);
+            _brewers = JsonSerializer.Deserialize<List<Brewer>>(json);
+        }
+    }
+
+    private void NavigateToBrewPage(string pageUrl)
+    {
+        NavigationManager.NavigateTo($"/brew/{pageUrl}");
+    }
 
 }

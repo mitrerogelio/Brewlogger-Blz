@@ -1,4 +1,4 @@
-namespace Brewlogger-Blz.Models;
+namespace Brewlogger_Blz.Models;
 
 public class Brewer
 {
