@@ -1,4 +1,4 @@
-@page "/brew/{BrewerName}"
+@page "/brew/{BrewerSlug}"
 @using Brewlogger_Blz.Models
 @using Brewlogger_Blz.Components.Layout
 @using System.Text.Json
@@ -14,7 +14,7 @@
 }
 
 @code {
-    [Parameter] public string? BrewerName { get; set; }
+    [Parameter] public string? BrewerSlug { get; set; }
 
     private Brewer? _currentBrewer;
 
@@ -29,7 +29,7 @@
             _brewers = JsonSerializer.Deserialize<List<Brewer>>(json);
         }
 
-        _currentBrewer = _brewers?.FirstOrDefault(b => b.Name.Equals(BrewerName, StringComparison.OrdinalIgnoreCase));
+        _currentBrewer = _brewers?.FirstOrDefault(b => b.PageUrl.Equals(BrewerSlug, StringComparison.OrdinalIgnoreCase));
 
         if (_currentBrewer == null)
         {

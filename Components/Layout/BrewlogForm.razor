@@ -18,13 +18,14 @@
     <DataAnnotationsValidator/>
     <img class="mx-auto w-52 h-52 rounded-full object-cover" src="@CurrentBrewer.ImageUrl" alt="Image of @CurrentBrewer.Name">
     <h4 id="brewerName" class="mx-auto text-2xl">@CurrentBrewer.Name</h4>
+    <p class="text-center mx-auto mb-2 text-sm text-gray-600">@CurrentBrewer.Description</p>
 
     <label for="coffeeName">Coffee Name:</label>
     <ValidationMessage For="@(() => _brewlog!.CoffeeName)"/>
     <InputText id="coffeeName" placeholder="Guatemala Light Roast" @bind-Value="_brewlog.CoffeeName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="dose" class="block text-sm font-medium leading-6 text-gray-900">Dose (grams):</label>
     <ValidationMessage For="@(() => _brewlog!.Dose)"/>
-    <InputNumber id="dose" placeholder="@CurrentBrewer.StartingDose" @bind-Value="_brewlog.Dose" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+    <InputNumber id="dose" @bind-Value="_brewlog.Dose" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="grind" class="block text-sm font-medium leading-6 text-gray-900">Grind:</label>
     <InputText id="grind" placeholder="Pre-ground - Medium" @bind-Value="_brewlog.Grind" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="roast" class="block text-sm font-medium leading-6 text-gray-900">Roast:</label>
@@ -59,11 +60,10 @@
 
     protected override void OnParametersSet()
     {
-        if (CurrentBrewer != null)
-        {
-            _brewlog.BrewerUsed = CurrentBrewer.Name;
-            // Set any default values for the form if needed
-        }
+        if (CurrentBrewer == null) return;
+        _brewlog.BrewerUsed = CurrentBrewer.Name;
+        _brewlog.Dose = CurrentBrewer.StartingDose;
+        _brewlog.BrewRatio = CurrentBrewer.StartingRatio;
     }
 
     private async Task HandleValidSubmit()
