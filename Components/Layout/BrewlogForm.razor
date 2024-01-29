@@ -1,7 +1,8 @@
 @using Brewlogger_Blz.Models;
-@using System.ComponentModel.DataAnnotations;
+@using System.Text
+@using System.Text.Json
+@using Brewlogger_Blz.Components.Pages
 @inject HttpClient Http;
-@inject NavigationManager NavigationManager;
 
 <article class="rounded-md bg-blue-50 p-4">
     <div class="flex justify-center w-full ml-1/2">
@@ -14,24 +15,21 @@
     </div>
 </article>
 
-<EditForm Model="@_brewlog" FormName="Brewlog Form" OnValidSubmit="HandleValidSubmit" class="flex flex-col w-1/2 mx-auto mt-20 gap-3">
-    <DataAnnotationsValidator/>
-    <img class="mx-auto w-52 h-52 rounded-full object-cover" src="@CurrentBrewer.ImageUrl" alt="Image of @CurrentBrewer.Name">
+<EditForm Model="@NewBrewlog" FormName="Brewlog Form" OnValidSubmit="HandleValidSubmit" class="flex flex-col w-1/2 mx-auto mt-20 gap-3">
+    <img class="mx-auto w-52 h-52 rounded-full object-cover" src="@CurrentBrewer!.ImageUrl" alt="Image of @CurrentBrewer.Name">
     <h4 id="brewerName" class="mx-auto text-2xl">@CurrentBrewer.Name</h4>
     <p class="text-center mx-auto mb-2 text-sm text-gray-600">@CurrentBrewer.Description</p>
 
     <label for="coffeeName">Coffee Name:</label>
-    <ValidationMessage For="@(() => _brewlog!.CoffeeName)"/>
-    <InputText id="coffeeName" placeholder="Guatemala Light Roast" @bind-Value="_brewlog.CoffeeName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+    <InputText id="coffeeName" placeholder="Guatemala Light Roast" @bind-Value="NewBrewlog.CoffeeName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="dose" class="block text-sm font-medium leading-6 text-gray-900">Dose (grams):</label>
-    <ValidationMessage For="@(() => _brewlog!.Dose)"/>
-    <InputNumber id="dose" @bind-Value="_brewlog.Dose" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+    <InputNumber id="dose" @bind-Value="NewBrewlog.Dose" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="grind" class="block text-sm font-medium leading-6 text-gray-900">Grind:</label>
-    <InputText id="grind" placeholder="Pre-ground - Medium" @bind-Value="_brewlog.Grind" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+    <InputText id="grind" placeholder="Pre-ground - Medium" @bind-Value="NewBrewlog.Grind" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="roast" class="block text-sm font-medium leading-6 text-gray-900">Roast:</label>
-    <InputText id="roast" placeholder="Light Roast" @bind-Value="_brewlog.Roast" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+    <InputText id="roast" placeholder="Light Roast" @bind-Value="NewBrewlog.Roast" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
     <label for="ratio" class="block text-sm font-medium leading-6 text-gray-900">Brew Ratio:</label>
-    <InputSelect id="ratio" @bind-Value="_brewlog.BrewRatio" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    <InputSelect id="ratio" @bind-Value="NewBrewlog.BrewRatio" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
         <option>Select Brew Ratio</option>
         @for (int i = 7; i < 21; i++)
         {
@@ -39,14 +37,14 @@
         }
     </InputSelect>
     <label for="rating" class="block text-sm font-medium leading-6 text-gray-900">Rating:</label>
-    <InputSelect id="rating" @bind-Value="_brewlog.Rating" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    <InputSelect id="rating" @bind-Value="NewBrewlog.Rating" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
         @for (int i = 0; i < 6; i++)
         {
             <option value="@i">@i</option>
         }
     </InputSelect>
     <label for="notes" class="block text-sm font-medium leading-6 text-gray-900">Notes</label>
-    <InputTextArea id="notes" rows="2" placeholder="Using Brewlogger Recipe" @bind-Value="_brewlog.Notes" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+    <InputTextArea id="notes" rows="2" placeholder="Using Brewlogger Recipe" @bind-Value="NewBrewlog.Notes" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 
     <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 mx-auto w-20 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
 </EditForm>
@@ -54,23 +52,48 @@
 @code {
     [Parameter] public Brewer? CurrentBrewer { get; set; }
 
-    private Brewlog _brewlog = new();
+    [SupplyParameterFromForm] public Brewlog NewBrewlog { get; set; } = new();
 
     private string _status = "Not submitted";
 
     protected override void OnParametersSet()
     {
         if (CurrentBrewer == null) return;
-        _brewlog.BrewerUsed = CurrentBrewer.Name;
-        _brewlog.Dose = CurrentBrewer.StartingDose;
-        _brewlog.BrewRatio = CurrentBrewer.StartingRatio;
+        NewBrewlog.BrewerUsed = CurrentBrewer.Name;
+        NewBrewlog.Dose = CurrentBrewer.StartingDose;
+        NewBrewlog.BrewRatio = CurrentBrewer.StartingRatio;
     }
 
-    private async Task HandleValidSubmit()
+    protected async Task HandleValidSubmit()
     {
-        _status = "Submitted";
-        // POST form somewhere 
-        NavigationManager.NavigateTo("/");
+        string jsonContent = JsonSerializer.Serialize(NewBrewlog);
+
+        HttpRequestMessage request = new(HttpMethod.Post, "/api/brewlogs");
+
+        const string accessToken = "replace-this";
+
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+        request.Headers.Add("X-Audience", "http://localhost:7115");
+
+        request.Content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+        try
+        {
+            HttpResponseMessage response = await Http.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _status = "Error occurred: " + response.ReasonPhrase;
+            }
+            else
+            {
+                _status = "Form submitted";
+            }
+        }
+        catch (Exception e)
+        {
+            _status = "Failed to post brewlog: " + e.Message;
+        }
     }
 
 }
